@@ -13,6 +13,9 @@
           "version": "latest",
           "tflint": "latest",
           "terragrunt": "latest"
+        },
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.9"
         }
     }
 }
