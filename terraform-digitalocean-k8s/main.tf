@@ -36,5 +36,5 @@ module "postgres_db" {
   db_password = var.db_password
 
   # Allow only the Kubernetes cluster to access the database
-  allowed_sources = [module.do_k8s_cluster.cluster_ip_range]
+  # allowed_sources = [module.do_k8s_cluster.cluster_ip_range]
 }
