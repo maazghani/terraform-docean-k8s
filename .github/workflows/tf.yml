@@ -21,7 +21,7 @@ jobs:
       run: cd terraform-digitalocean-k8s && terraform init
 
     - name: Terraform Plan
-      run: cd terraform-digitalocean-k8s && terraform plan -var="do_token=${{ secrets.DO_ACCESS_TOKEN }}"
+      run: cd terraform-digitalocean-k8s && terraform plan -var="do_token=${{ secrets.DO_ACCESS_TOKEN }}" -out=tfplan && cat tfplan
 
     #- name: Terraform Apply
     #  run: terraform apply -var="do_token=${{ secrets.DO_ACCESS_TOKEN }}" -auto-approve
