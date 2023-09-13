@@ -14,11 +14,11 @@ resource "digitalocean_database_user" "db_user" {
   password   = var.db_password
 }
 
-resource "digitalocean_database_firewall" "db_firewall" {
-  cluster_id = digitalocean_database_cluster.postgres_cluster.id
-}
+#resource "digitalocean_database_firewall" "db_firewall" {
+# cluster_id = digitalocean_database_cluster.postgres_cluster.id
+#}
 
-resource "digitalocean_database_firewall_rule" "db_firewall_rule" {
-    type  = "k8s"
-    value = var.allowed_sources
-  }
+#resource "digitalocean_database_firewall_rule" "db_firewall_rule" {
+#    type  = "k8s"
+#    value = var.allowed_sources
+#  }
