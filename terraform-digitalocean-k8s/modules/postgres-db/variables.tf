@@ -1,6 +1,5 @@
 variable "db_name" {
   description = "The name of the PostgreSQL database"
-  type        = string
   default     = "postgres" 
 }
 
@@ -10,7 +9,7 @@ variable "db_user" {
 }
 
 variable "db_password" {
-  description = "The password for the PostgreSQL database user"
+  description = "The password for the Po stgreSQL database user"
   type        = string
   sensitive   = true
 }
@@ -23,4 +22,4 @@ variable "region" {
 variable "allowed_sources" {
   description = "List of sources allowed to access the database"
   type        = list(string)
-f
+}

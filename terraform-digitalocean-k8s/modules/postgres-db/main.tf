@@ -1,6 +1,5 @@
 resource "digitalocean_database_cluster" "postgres_cluster" {
-  name       = var.db_name
-  engine     = "pg"
+  name       = "dev"
   version    = "12"
   size       = "db-s-1vcpu-1gb"
   region     = var.region
@@ -17,8 +16,9 @@ resource "digitalocean_database_user" "db_user" {
 
 resource "digitalocean_database_firewall" "db_firewall" {
   cluster_id = digitalocean_database_cluster.postgres_cluster.id
+}
 
-  rule {
+resource "digitalocean_database_firewall_rule" "db_firewall_rule" {
     type  = "k8s"
     value = var.allowed_sources
   }
