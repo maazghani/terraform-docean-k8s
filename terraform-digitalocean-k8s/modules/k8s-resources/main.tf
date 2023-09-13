@@ -19,7 +19,7 @@ resource "helm_release" "prometheus" {
   namespace  = "monitoring"
 }
 
-resource "namespace" "monitoring" {
+resource "kubernetes_namespace" "default" {
   metadata {
     name = "monitoring"
   }
