@@ -18,7 +18,7 @@ variable "db_password" {
   type        = string
 }
 
-variable "allowed_sources" {
-  description = "The list of IP ranges allowed to access the database"
-  type        = list(string)
-}
+#variable "allowed_sources" {
+ # description = "The list of IP ranges allowed to access the database"
+  #type        = list(string)
+#}
