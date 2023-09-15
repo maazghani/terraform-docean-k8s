@@ -14,17 +14,17 @@ module "do_k8s_cluster" {
 
   monitoring_nodes = {
     size  = var.monitoring_node_size
-    count = var.monitoring_node_count
+    count = var.monitoring_nodes_count
   }
 }
 
 # Call the Kubernetes Resources module
-module "k8s_resources" {
-  source = "./modules/k8s-resources"
-
+#module "k8s_resources" {
+#  source = "./modules/k8s-resources"
+#
   # Variables specific to the Kubernetes resources module
-  cluster_id = module.do_k8s_cluster.cluster_id
-}
+#  cluster_id = module.do_k8s_cluster.id
+#}
 
 # Call the PostgreSQL Database module
 module "postgres_db" {
@@ -34,7 +34,9 @@ module "postgres_db" {
   db_name     = var.db_name
   db_user     = var.db_user
   db_password = var.db_password
+  region      = var.region
 
   # Allow only the Kubernetes cluster to access the database
-  # allowed_sources = [module.do_k8s_cluster.cluster_ip_range]
+  allowed_sources = [module.do_k8s_cluster.cluster_ip_range]
+  depends_on      = [module.do_k8s_cluster]
 }
