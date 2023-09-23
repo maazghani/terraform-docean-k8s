@@ -1,0 +1,868 @@
+{
+  "version": 4,
+  "terraform_version": "1.5.7",
+  "serial": 51,
+  "lineage": "fedac05c-1e05-27c6-a7d2-0e0b90d13293",
+  "outputs": {
+    "cluster_summary": {
+      "value": {
+        "agents": [
+          {
+            "id": "375681380",
+            "ip_private": "10.10.10.8",
+            "ip_public": "143.198.49.233",
+            "name": "k3s-agent-sfo3-9d31-1",
+            "price": 12
+          },
+          {
+            "id": "375681377",
+            "ip_private": "10.10.10.7",
+            "ip_public": "143.244.177.165",
+            "name": "k3s-agent-sfo3-0dc3-2",
+            "price": 12
+          },
+          {
+            "id": "375681376",
+            "ip_private": "10.10.10.6",
+            "ip_public": "143.198.150.205",
+            "name": "k3s-agent-sfo3-6a1d-3",
+            "price": 12
+          }
+        ],
+        "api_server_ip": "24.199.72.139",
+        "cluster_region": "sfo3",
+        "servers": [
+          {
+            "id": "375677384",
+            "ip_private": "10.10.10.3",
+            "ip_public": "24.144.84.244",
+            "name": "k3s-server-sfo3-1583-1",
+            "price": 12
+          },
+          {
+            "id": "375677442",
+            "ip_private": "10.10.10.5",
+            "ip_public": "146.190.130.121",
+            "name": "k3s-server-sfo3-97be-2",
+            "price": 12
+          }
+        ]
+      },
+      "type": [
+        "object",
+        {
+          "agents": [
+            "tuple",
+            [
+              [
+                "object",
+                {
+                  "id": "string",
+                  "ip_private": "string",
+                  "ip_public": "string",
+                  "name": "string",
+                  "price": "number"
+                }
+              ],
+              [
+                "object",
+                {
+                  "id": "string",
+                  "ip_private": "string",
+                  "ip_public": "string",
+                  "name": "string",
+                  "price": "number"
+                }
+              ],
+              [
+                "object",
+                {
+                  "id": "string",
+                  "ip_private": "string",
+                  "ip_public": "string",
+                  "name": "string",
+                  "price": "number"
+                }
+              ]
+            ]
+          ],
+          "api_server_ip": "string",
+          "cluster_region": "string",
+          "servers": [
+            "tuple",
+            [
+              [
+                "object",
+                {
+                  "id": "string",
+                  "ip_private": "string",
+                  "ip_public": "string",
+                  "name": "string",
+                  "price": "number"
+                }
+              ],
+              [
+                "object",
+                {
+                  "id": "string",
+                  "ip_private": "string",
+                  "ip_public": "string",
+                  "name": "string",
+                  "price": "number"
+                }
+              ]
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "resources": [
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_database_cluster",
+      "name": "k3s",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "backup_restore": [],
+            "database": "defaultdb",
+            "engine": "pg",
+            "eviction_policy": null,
+            "host": "k3s-ext-datastore-do-user-14651050-0.b.db.ondigitalocean.com",
+            "id": "c480da4f-99a2-4d36-a130-474f10568d07",
+            "maintenance_window": [],
+            "name": "k3s-ext-datastore",
+            "node_count": 1,
+            "password": "AVNS_TvedyeRpLrJy-EE6Wod",
+            "port": 25060,
+            "private_host": "private-k3s-ext-datastore-do-user-14651050-0.b.db.ondigitalocean.com",
+            "private_network_uuid": "b49bb050-2eb1-4e4f-8f38-0124a074ba99",
+            "private_uri": "postgresql://doadmin:AVNS_TvedyeRpLrJy-EE6Wod@private-k3s-ext-datastore-do-user-14651050-0.b.db.ondigitalocean.com:25060/defaultdb?sslmode=require",
+            "project_id": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "region": "sfo3",
+            "size": "db-s-1vcpu-1gb",
+            "sql_mode": null,
+            "tags": [],
+            "timeouts": null,
+            "uri": "postgresql://doadmin:AVNS_TvedyeRpLrJy-EE6Wod@k3s-ext-datastore-do-user-14651050-0.b.db.ondigitalocean.com:25060/defaultdb?sslmode=require",
+            "urn": "do:dbaas:c480da4f-99a2-4d36-a130-474f10568d07",
+            "user": "doadmin",
+            "version": "15"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "module.ha-k3s.digitalocean_vpc.k3s_vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_database_firewall",
+      "name": "k3s",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "cluster_id": "c480da4f-99a2-4d36-a130-474f10568d07",
+            "id": "c480da4f-99a2-4d36-a130-474f10568d07-20230920182746372000000001",
+            "rule": [
+              {
+                "created_at": "2023-09-20T18:27:46Z",
+                "type": "tag",
+                "uuid": "68cf2058-adbf-43fd-9d89-5bad3a75dcff",
+                "value": "k3s_server"
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.ha-k3s.digitalocean_database_cluster.k3s",
+            "module.ha-k3s.digitalocean_tag.server",
+            "module.ha-k3s.digitalocean_vpc.k3s_vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_database_user",
+      "name": "dbuser",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "cluster_id": "c480da4f-99a2-4d36-a130-474f10568d07",
+            "id": "c480da4f-99a2-4d36-a130-474f10568d07/user/k3s_default_user",
+            "mysql_auth_plugin": null,
+            "name": "k3s_default_user",
+            "password": "AVNS_1r8vExQl-VhbssE1IMB",
+            "role": "normal"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.ha-k3s.digitalocean_database_cluster.k3s",
+            "module.ha-k3s.digitalocean_vpc.k3s_vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_droplet",
+      "name": "k3s_server",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 1,
+          "attributes": {
+            "backups": false,
+            "created_at": "2023-09-20T18:28:18Z",
+            "disk": 50,
+            "droplet_agent": null,
+            "graceful_shutdown": false,
+            "id": "375677442",
+            "image": "ubuntu-20-04-x64",
+            "ipv4_address": "146.190.130.121",
+            "ipv4_address_private": "10.10.10.5",
+            "ipv6": false,
+            "ipv6_address": "",
+            "locked": false,
+            "memory": 2048,
+            "monitoring": true,
+            "name": "k3s-server-sfo3-97be-2",
+            "price_hourly": 0.01786,
+            "price_monthly": 12,
+            "private_networking": true,
+            "region": "sfo3",
+            "resize_disk": true,
+            "size": "s-1vcpu-2gb",
+            "ssh_keys": [
+              "21:ab:40:5e:a8:74:67:2a:25:ae:30:dd:f2:3a:83:cc"
+            ],
+            "status": "active",
+            "tags": [
+              "k3s_server"
+            ],
+            "timeouts": null,
+            "urn": "do:droplet:375677442",
+            "user_data": "454ec0297893699b9af1780741ab7fadfa20a87a",
+            "vcpus": 1,
+            "volume_ids": [],
+            "vpc_uuid": "b49bb050-2eb1-4e4f-8f38-0124a074ba99"
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "user_data"
+              }
+            ]
+          ],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozNjAwMDAwMDAwMDAwLCJkZWxldGUiOjYwMDAwMDAwMDAwLCJ1cGRhdGUiOjM2MDAwMDAwMDAwMDB9LCJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "module.ha-k3s.digitalocean_database_cluster.k3s",
+            "module.ha-k3s.digitalocean_database_user.dbuser",
+            "module.ha-k3s.digitalocean_droplet.k3s_server_init",
+            "module.ha-k3s.digitalocean_firewall.ccm_firewall",
+            "module.ha-k3s.digitalocean_loadbalancer.k3s_lb",
+            "module.ha-k3s.digitalocean_tag.agent",
+            "module.ha-k3s.digitalocean_tag.server",
+            "module.ha-k3s.digitalocean_vpc.k3s_vpc",
+            "module.ha-k3s.random_id.server_node_id",
+            "module.ha-k3s.random_password.k3s_token"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_firewall",
+      "name": "ccm_firewall",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "created_at": "2023-09-20T18:06:26Z",
+            "droplet_ids": [],
+            "id": "3a988b96-bf0d-4b34-be06-e71755aa4e79",
+            "inbound_rule": [],
+            "name": "ccm-firewall",
+            "outbound_rule": [
+              {
+                "destination_addresses": [
+                  "0.0.0.0/0",
+                  "::/0"
+                ],
+                "destination_droplet_ids": [],
+                "destination_kubernetes_ids": [],
+                "destination_load_balancer_uids": [],
+                "destination_tags": [],
+                "port_range": "",
+                "protocol": "icmp"
+              }
+            ],
+            "pending_changes": [],
+            "status": "succeeded",
+            "tags": []
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_firewall",
+      "name": "k3s_firewall",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "created_at": "2023-09-20T18:06:27Z",
+            "droplet_ids": [],
+            "id": "76855eab-f4fd-4a8b-be54-73875c4ef718",
+            "inbound_rule": [
+              {
+                "port_range": "",
+                "protocol": "icmp",
+                "source_addresses": [
+                  "10.10.10.0/24"
+                ],
+                "source_droplet_ids": [],
+                "source_kubernetes_ids": [],
+                "source_load_balancer_uids": [],
+                "source_tags": []
+              },
+              {
+                "port_range": "1-65535",
+                "protocol": "tcp",
+                "source_addresses": [
+                  "10.10.10.0/24"
+                ],
+                "source_droplet_ids": [],
+                "source_kubernetes_ids": [],
+                "source_load_balancer_uids": [],
+                "source_tags": []
+              },
+              {
+                "port_range": "1-65535",
+                "protocol": "udp",
+                "source_addresses": [
+                  "10.10.10.0/24"
+                ],
+                "source_droplet_ids": [],
+                "source_kubernetes_ids": [],
+                "source_load_balancer_uids": [],
+                "source_tags": []
+              },
+              {
+                "port_range": "22",
+                "protocol": "tcp",
+                "source_addresses": [
+                  "0.0.0.0/0",
+                  "::/0"
+                ],
+                "source_droplet_ids": [],
+                "source_kubernetes_ids": [],
+                "source_load_balancer_uids": [],
+                "source_tags": []
+              }
+            ],
+            "name": "k3s-firewall",
+            "outbound_rule": [
+              {
+                "destination_addresses": [
+                  "0.0.0.0/0",
+                  "::/0"
+                ],
+                "destination_droplet_ids": [],
+                "destination_kubernetes_ids": [],
+                "destination_load_balancer_uids": [],
+                "destination_tags": [],
+                "port_range": "1-65535",
+                "protocol": "tcp"
+              },
+              {
+                "destination_addresses": [
+                  "0.0.0.0/0",
+                  "::/0"
+                ],
+                "destination_droplet_ids": [],
+                "destination_kubernetes_ids": [],
+                "destination_load_balancer_uids": [],
+                "destination_tags": [],
+                "port_range": "1-65535",
+                "protocol": "udp"
+              }
+            ],
+            "pending_changes": [],
+            "status": "succeeded",
+            "tags": [
+              "k3s_agent",
+              "k3s_server"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.ha-k3s.digitalocean_tag.agent",
+            "module.ha-k3s.digitalocean_tag.server"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_project",
+      "name": "k3s_cluster",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "created_at": "2023-09-20T18:06:26Z",
+            "description": "k3s Cluster",
+            "environment": "Development",
+            "id": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "is_default": false,
+            "name": "dev",
+            "owner_id": 14651050,
+            "owner_uuid": "2394d47b-a4db-48fc-9f7f-9298744d4d50",
+            "purpose": "HA K3s (Kubernetes) Cluster",
+            "resources": [
+              "do:dbaas:c480da4f-99a2-4d36-a130-474f10568d07",
+              "do:droplet:375677384",
+              "do:droplet:375677442",
+              "do:droplet:375681376",
+              "do:droplet:375681377",
+              "do:droplet:375681380",
+              "do:loadbalancer:ddff7476-0657-4a3a-b6ba-4dc17ad2587a"
+            ],
+            "timeouts": null,
+            "updated_at": "2023-09-20T18:16:33Z"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjoxODAwMDAwMDAwMDB9fQ=="
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_project_resources",
+      "name": "k3s_agent_nodes",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "project": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "resources": [
+              "do:droplet:375681380"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.ha-k3s.digitalocean_droplet.k3s_agent",
+            "module.ha-k3s.digitalocean_loadbalancer.k3s_lb",
+            "module.ha-k3s.digitalocean_project.k3s_cluster",
+            "module.ha-k3s.digitalocean_tag.agent",
+            "module.ha-k3s.digitalocean_tag.server",
+            "module.ha-k3s.digitalocean_vpc.k3s_vpc",
+            "module.ha-k3s.random_id.agent_node_id",
+            "module.ha-k3s.random_password.k3s_token"
+          ]
+        },
+        {
+          "index_key": 1,
+          "schema_version": 0,
+          "attributes": {
+            "id": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "project": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "resources": [
+              "do:droplet:375681377"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.ha-k3s.digitalocean_droplet.k3s_agent",
+            "module.ha-k3s.digitalocean_loadbalancer.k3s_lb",
+            "module.ha-k3s.digitalocean_project.k3s_cluster",
+            "module.ha-k3s.digitalocean_tag.agent",
+            "module.ha-k3s.digitalocean_tag.server",
+            "module.ha-k3s.digitalocean_vpc.k3s_vpc",
+            "module.ha-k3s.random_id.agent_node_id",
+            "module.ha-k3s.random_password.k3s_token"
+          ]
+        },
+        {
+          "index_key": 2,
+          "schema_version": 0,
+          "attributes": {
+            "id": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "project": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "resources": [
+              "do:droplet:375681376"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.ha-k3s.digitalocean_droplet.k3s_agent",
+            "module.ha-k3s.digitalocean_loadbalancer.k3s_lb",
+            "module.ha-k3s.digitalocean_project.k3s_cluster",
+            "module.ha-k3s.digitalocean_tag.agent",
+            "module.ha-k3s.digitalocean_tag.server",
+            "module.ha-k3s.digitalocean_vpc.k3s_vpc",
+            "module.ha-k3s.random_id.agent_node_id",
+            "module.ha-k3s.random_password.k3s_token"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_project_resources",
+      "name": "k3s_api_server_lb",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "project": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "resources": [
+              "do:loadbalancer:ddff7476-0657-4a3a-b6ba-4dc17ad2587a"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.ha-k3s.digitalocean_loadbalancer.k3s_lb",
+            "module.ha-k3s.digitalocean_project.k3s_cluster",
+            "module.ha-k3s.digitalocean_tag.server",
+            "module.ha-k3s.digitalocean_vpc.k3s_vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_project_resources",
+      "name": "k3s_ext_datastore",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "project": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "resources": [
+              "do:dbaas:c480da4f-99a2-4d36-a130-474f10568d07"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.ha-k3s.digitalocean_database_cluster.k3s",
+            "module.ha-k3s.digitalocean_project.k3s_cluster",
+            "module.ha-k3s.digitalocean_vpc.k3s_vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_project_resources",
+      "name": "k3s_init_server_node",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "project": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "resources": [
+              "do:droplet:375677384"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.ha-k3s.digitalocean_database_cluster.k3s",
+            "module.ha-k3s.digitalocean_database_user.dbuser",
+            "module.ha-k3s.digitalocean_droplet.k3s_server_init",
+            "module.ha-k3s.digitalocean_firewall.ccm_firewall",
+            "module.ha-k3s.digitalocean_loadbalancer.k3s_lb",
+            "module.ha-k3s.digitalocean_project.k3s_cluster",
+            "module.ha-k3s.digitalocean_tag.agent",
+            "module.ha-k3s.digitalocean_tag.server",
+            "module.ha-k3s.digitalocean_vpc.k3s_vpc",
+            "module.ha-k3s.random_id.server_node_id",
+            "module.ha-k3s.random_password.k3s_token"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_project_resources",
+      "name": "k3s_server_nodes",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "id": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "project": "3bb6059b-f34c-4cbd-8ae4-d4db4fb98a87",
+            "resources": [
+              "do:droplet:375677442"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.ha-k3s.digitalocean_database_cluster.k3s",
+            "module.ha-k3s.digitalocean_database_user.dbuser",
+            "module.ha-k3s.digitalocean_droplet.k3s_server",
+            "module.ha-k3s.digitalocean_droplet.k3s_server_init",
+            "module.ha-k3s.digitalocean_firewall.ccm_firewall",
+            "module.ha-k3s.digitalocean_loadbalancer.k3s_lb",
+            "module.ha-k3s.digitalocean_project.k3s_cluster",
+            "module.ha-k3s.digitalocean_tag.agent",
+            "module.ha-k3s.digitalocean_tag.server",
+            "module.ha-k3s.digitalocean_vpc.k3s_vpc",
+            "module.ha-k3s.random_id.server_node_id",
+            "module.ha-k3s.random_password.k3s_token"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_tag",
+      "name": "agent",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "databases_count": 0,
+            "droplets_count": 3,
+            "id": "k3s_agent",
+            "images_count": 0,
+            "name": "k3s_agent",
+            "total_resource_count": 3,
+            "volume_snapshots_count": 0,
+            "volumes_count": 0
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_tag",
+      "name": "server",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "databases_count": 0,
+            "droplets_count": 2,
+            "id": "k3s_server",
+            "images_count": 0,
+            "name": "k3s_server",
+            "total_resource_count": 2,
+            "volume_snapshots_count": 0,
+            "volumes_count": 0
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "digitalocean_vpc",
+      "name": "k3s_vpc",
+      "provider": "provider[\"registry.terraform.io/digitalocean/digitalocean\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "created_at": "2023-09-20 18:06:26 +0000 UTC",
+            "default": false,
+            "description": "",
+            "id": "b49bb050-2eb1-4e4f-8f38-0124a074ba99",
+            "ip_range": "10.10.10.0/24",
+            "name": "k3s-vpc-01",
+            "region": "sfo3",
+            "timeouts": null,
+            "urn": "do:vpc:b49bb050-2eb1-4e4f-8f38-0124a074ba99"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjoxMjAwMDAwMDAwMDB9fQ=="
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "random_id",
+      "name": "agent_node_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/random\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "b64_std": "nTE=",
+            "b64_url": "nTE",
+            "byte_length": 2,
+            "dec": "40241",
+            "hex": "9d31",
+            "id": "nTE",
+            "keepers": null,
+            "prefix": null
+          },
+          "sensitive_attributes": []
+        },
+        {
+          "index_key": 1,
+          "schema_version": 0,
+          "attributes": {
+            "b64_std": "DcM=",
+            "b64_url": "DcM",
+            "byte_length": 2,
+            "dec": "3523",
+            "hex": "0dc3",
+            "id": "DcM",
+            "keepers": null,
+            "prefix": null
+          },
+          "sensitive_attributes": []
+        },
+        {
+          "index_key": 2,
+          "schema_version": 0,
+          "attributes": {
+            "b64_std": "ah0=",
+            "b64_url": "ah0",
+            "byte_length": 2,
+            "dec": "27165",
+            "hex": "6a1d",
+            "id": "ah0",
+            "keepers": null,
+            "prefix": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "random_id",
+      "name": "server_node_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/random\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "b64_std": "FYM=",
+            "b64_url": "FYM",
+            "byte_length": 2,
+            "dec": "5507",
+            "hex": "1583",
+            "id": "FYM",
+            "keepers": null,
+            "prefix": null
+          },
+          "sensitive_attributes": []
+        },
+        {
+          "index_key": 1,
+          "schema_version": 0,
+          "attributes": {
+            "b64_std": "l74=",
+            "b64_url": "l74",
+            "byte_length": 2,
+            "dec": "38846",
+            "hex": "97be",
+            "id": "l74",
+            "keepers": null,
+            "prefix": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.ha-k3s",
+      "mode": "managed",
+      "type": "random_password",
+      "name": "k3s_token",
+      "provider": "provider[\"registry.terraform.io/hashicorp/random\"]",
+      "instances": [
+        {
+          "schema_version": 3,
+          "attributes": {
+            "bcrypt_hash": "$2a$10$Yue8Glol7bY9PDISFvsCu.LMX9WW2nh0cQv18HBM9YPiBa.db6UDW",
+            "id": "none",
+            "keepers": null,
+            "length": 48,
+            "lower": true,
+            "min_lower": 0,
+            "min_numeric": 0,
+            "min_special": 0,
+            "min_upper": 0,
+            "number": true,
+            "numeric": true,
+            "override_special": null,
+            "result": "qxhmumzxyr6iyzptwetvozg2i5vsbui6bppo3rjbcflvb6r7",
+            "special": false,
+            "upper": false
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}
